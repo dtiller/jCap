@@ -1,5 +1,27 @@
 package com.davidtiller.jcap;
 
+/*
+	jCap - Capture network traffic without promiscuous mode permissions
+	and write the traffic to a file.
+	The output files can be read by the Wireshark utility text2cap 
+	and then analyzed by wireshark.
+
+    Copyright (C) 2018  David E. Tiller
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -27,6 +49,8 @@ public class JCap {
 	static final PrintStream log = System.out;
 
 	public static void main(String[] args) {
+		copyright();
+		
 		if (args.length % 2 != 0) {
 			usage("Odd number of args.", 1);
 		}
@@ -258,6 +282,15 @@ public class JCap {
 		System.err.println("\t[--debug <true|false>]");
 		System.err.println("\t[--max-segment <seg-size> (default 32768)]");
 		System.exit(exitCode);
+	}
+	
+	private static void copyright() {
+		System.out.println("jCap - Copyright (C) 2018  David E. Tiller");
+		System.out.println("This program comes with ABSOLUTELY NO WARRANTY; for details see");
+		System.out.println("https://www.gnu.org/licenses/gpl-3.0.html");
+		System.out.println("This is free software, and you are welcome to redistribute it under");
+		System.out.println("certain conditions; for details see https://www.gnu.org/licenses/gpl-3.0.html");
+		System.out.println();
 	}
 
 }
